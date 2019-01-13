@@ -114,7 +114,7 @@ func TestRedisStringStore_Get(t *testing.T) {
 
 	// get
 	value, err = store.Get(key)
-	if !errors.CodeEqual(ErrNoStoreKey, err) {
+	if !errors.EqualCode(ErrNoStoreKey, err) {
 		t.Fatal(err)
 	}
 }

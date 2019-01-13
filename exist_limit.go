@@ -41,7 +41,7 @@ func (this *existLimit) Check(identifier string, opts ...Option) error {
 	}
 
 	value, err := this.store.Get(identifier)
-	if errors.CodeEqual(ErrNoStoreKey, err) {
+	if errors.EqualCode(ErrNoStoreKey, err) {
 		return errors.NewCodeSprintf(ErrCheckLimitFailed, "check %s is not exist %s", this.name, identifier)
 	} else if err != nil {
 		return err
