@@ -1,5 +1,9 @@
 package limit
 
+import (
+	"github.com/go-framework/errors"
+)
+
 // Error code type.
 type ErrCode int32
 
@@ -25,4 +29,9 @@ func (e ErrCode) Message() string {
 // Implement Message interface.
 func (e ErrCode) Error() string {
 	return ErrCodeMessages[(-1*e)-1]
+}
+
+// Return a new error with detail.
+func (e ErrCode) WithDetail(detail interface{}) error {
+	return errors.NewCode(e, detail)
 }
